@@ -1,4 +1,4 @@
-{
+[{
     "id": 1,
     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGbrpqMrP89J_savVdn-O5q4Ok4qa1J0qMgEipGKM_30OLQFC7yw&s",
     "clicked": false
@@ -68,30 +68,6 @@
     "id": 12,
     "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCc-X7Rd6rgayeCNW3IOq7wsFgHfxeNRDoShlr5e5wxnlVTdhYgA&s",
     "clicked": false
-},
-
-{
-    "id": 13,
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJpGbSJdBbreLY6TkiOEAEHl1gQd7YQDNZVmYKU3L6MStS268ptQ&s",
-    "clicked": false
-},
-
-{
-    "id": 14,
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjfHRgFwg9uJ0OZurFNQffILkQhMf7QWrks86gacaxplpoHrstgw&s",
-    "clicked": false
-},
-
-{
-    "id": 15,
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7z-24cWGfndSNWWhXnAZvP7z-XmNUtz19aFDzWLyJZr5bvvu7xw&s",
-    "clicked": false
-},
-
-{
-    "id": 16,
-    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS79R9cPxCTKhh8W5hu7Top97aJYUlXyfJI92k1wIqrhO343-S_Iw&s",
-    "clicked": false
-},
+}]
 
 

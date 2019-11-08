@@ -9,7 +9,7 @@ class App extends Component {
     data,
     score: 0,
     topScore: 0,
-    result: "Click an Image to Begin!"
+    result: "Click an A Simpsons Character to Begin!"
   };
 
   //Function to shuffle data array
@@ -67,7 +67,7 @@ class App extends Component {
     this.setState({
       data: this.reset(data),
       score: 0,
-      result: "Wrong! Click to try again!"
+      result: "Wrong! Click again!"
     });
   };
 
