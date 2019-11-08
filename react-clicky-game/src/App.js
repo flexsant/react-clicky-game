@@ -9,7 +9,7 @@ class App extends Component {
     data,
     score: 0,
     topScore: 0,
-    result: "Click an A Simpsons Character to Begin!"
+    result: "Click on any Simpsons character to begin!"
   };
 
   //Function to shuffle data array
@@ -57,7 +57,7 @@ class App extends Component {
     this.setState({
       data: this.shuffle(data),
       score: newScore,
-      result: "You Guessed Correctly",
+      result: "You guessed correctly",
       topScore: Math.max(this.state.topScore, newScore)
     });
   };
