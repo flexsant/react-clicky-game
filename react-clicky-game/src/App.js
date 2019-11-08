@@ -23,7 +23,11 @@ class App extends Component {
     return data;
   };
   //function to reset the data change all the clicked values to false
-
+  reset = data => {
+    const resetData = data.map(item => ({ ...item, clicked: false }));
+    return this.shuffle(resetData);
+    //return resetData;
+  };
   //function to handle image click
 
   //function to handle a good guess
