@@ -5,14 +5,29 @@ import ClickImage from "./components/ClickImage";
 
 class App extends Component {
   //state
- 
+  state = {
+    data,
+    score: 0,
+    topScore: 0,
+    result: "Click an Image to Begin!"
+  };
   //Function to shuffle data array
+  shuffle = data => {
+    let i = data.length - 1;
+    for (i; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const temp = data[i];
+      data[i] = data[j];
+      data[j] = temp;
+    }
+    return data;
+  };
   //function to reset the data change all the clicked values to false
- 
+
   //function to handle image click
-  
+
   //function to handle a good guess
- 
+
   //function to handle a bad guess
   render() {
     return (
