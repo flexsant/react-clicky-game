@@ -50,6 +50,7 @@ class App extends Component {
       this.handleBadGuess(newData);
     }
   };
+  
   //function to handle a good guess
   handleGoodGuess = data => {
     const newScore = this.state.score + 1;

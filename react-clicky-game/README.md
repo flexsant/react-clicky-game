@@ -4,90 +4,73 @@
 Begin by clicking on any of the Simpsons characters and make sure to click a different character each time to see the highest score you can achieve.
 
 ## Visual Aids
-[Landingpage]()
+[Heroku](https://vast-shore-39692.herokuapp.com/)
 
 ## User Guides
-- Friend-finder will ask the user 10 questions with 5 varying degrees of approvable or disapproval.
-- Once the user finishes the questionare friend-finder will match them with one of ten friendly candidates.
+- 12 of the Simpsons cast members were specially selected for this app
+- Start by choosing/clicking a character and the next chosen character must be different. 
+- See your highest total score by selecting a different character while the cast gets shuffled around.
 
 
 ## Code Snippet
 ```Javascript
-// posting api/friends in api/routes
-app.post("/api/friends", function (req, res) {
-    var newFriend = req.body;
-    var newFriendScores = newFriend.scores;
-    var totalDifference;
-
-    console.log(newFriend);
-
-    var match = {
-        name: "",
-        photo: "",
-        difference: 999
+  //Function to shuffle data array
+  shuffle = data => {
+    let i = data.length - 1;
+    for (i; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const temp = data[i];
+      data[i] = data[j];
+      data[j] = temp;
     }
+    return data;
+  };
 
-    for (var i = 0; i < friends.length; i++) {
-        currentFriend = friends[i];
-        currentFriendScores = friends[i].scores;
-
-        totalDifference = 0;
-
-        for (var j = 0; j < currentFriendScores.length; j++) {
-            var difference = 0;
-            //the current score we are looping over of the friend from the json
-            currentFriendScore = currentFriendScores[j];
-            //the same index of the scores from the newFriend
-            newFriendScore = newFriendScores[j];
-            //figure out the difference
-            difference = Math.abs(parseInt(currentFriendScore) - parseInt(newFriendScore));
-            //figure out the difference and add it to the totalDifference
-            totalDifference += difference
-        }
-
-        if (totalDifference <= match.difference) {
-            match.name = currentFriend.name;
-            match.photo = currentFriend.photo;
-            match.difference = totalDifference;
-        }
-    }
 ```
 ````Javascript
- //on click for form submit
-
-     $("#submit").click(function (event) {
-         event.preventDefault()
-         var name = $("#name").val().trim();
-         var photo = $("#photo").val().trim();
-         var userAnswers = [
-             $("input[name='q1']:checked").val().trim(),
-             $("input[name='q2']:checked").val().trim(),
-             $("input[name='q3']:checked").val().trim(),
-             $("input[name='q4']:checked").val().trim(),
-             $("input[name='q5']:checked").val().trim(),
-             $("input[name='q6']:checked").val().trim(),
-             $("input[name='q7']:checked").val().trim(),
-             $("input[name='q8']:checked").val().trim(),
-             $("input[name='q9']:checked").val().trim(),
-             $("input[name='q10']:checked").val().trim(),
-         ]
-         console.log(userAnswers)
-
-         if (userAnswers.length === 10) {
-             var newFriend = {
-                 name: name,
-                 photo: photo,
-                 scores: userAnswers
-             }
-             console.log("newFriend: ", newFriend);
-
-             $.post("/api/friends", newFriend, function (match) {
-                 alert(match.name);
-             })
-         }
-     });
+   //function to handle image click
+  handleImageClick = id => {
+    let goodGuess = false;
+    const newData = this.state.data.map(item => {
+      const currentItem = { ...item };
+      if (id === currentItem.id) {
+        if (!currentItem.clicked) {
+          currentItem.clicked = true;
+          goodGuess = true;
+        }
+      }
+      return currentItem;
+    });
+    if (goodGuess) {
+      this.handleGoodGuess(newData);
+    } else {
+      this.handleBadGuess(newData);
+    }
+  };
 ````
 
+````Javascript
+//function to handle a good guess
+  handleGoodGuess = data => {
+    const newScore = this.state.score + 1;
+    //const newTopScore = Math.max(this.state.topScore, newScore);
+    this.setState({
+      data: this.shuffle(data),
+      score: newScore,
+      result: "You guessed correctly",
+      topScore: Math.max(this.state.topScore, newScore)
+    });
+  };
+
+  //function to handle a bad guess
+  handleBadGuess = data => {
+    this.setState({
+      data: this.reset(data),
+      score: 0,
+      result: "Wrong! Click again!"
+    });
+  };
+````
 
 ## Technologies Used
 - Git - version control system to track changes to source code.
@@ -95,19 +78,17 @@ app.post("/api/friends", function (req, res) {
 - Javascript - allows dynamic interaction between user and computer data entry.
 - JQuery - a javascript library that allows for simple yet more diverse and less verbos.
 - NODE.js - javascript run-time environment that can be run outside of browser.
-- Inquirer - command line user interfaces.
-- Sequelize - Capture all the data and store into a table.
-- Express - A node package for server hosting.
-- Node.js - Backend server.
+- Heroku - A cloud platform that allows developers to build, run, and operate on the cloud 
+- React - A javascript library for building user interfaces
 - jQuery - A library used for server communication.
 - HTML - Backbone of the site.
 - CSS - For additional styling.
 
 
 ## Learning Points 
-- Deploying Heroku was unsuccesful but will be a future feature
-- GET routes displayed on JSON
-- POST routes to handle to survey results
+- Fisher-Yates Modern Shuffle method, which shuffles the character images in the data.JSON array by running a loop and swapping index values sarting with index 0 and last index. i.e. A random number is chosen between index 1 and index 10 and swapped positions
+- Map method, applys a function on every element in an array
+
 ## Author
 - Lex Santos - [GitHub](https://github.com/flexsant) | [LinkedIn](https://www.linkedin.com/in/lex-santos-673623194/)
 
